@@ -1,0 +1,29 @@
+
+  .links-container {
+    position: fixed;
+    flex-direction: row;
+    justify-content: space-around; /* יציב עם מרחב יבש בין הכפתורים */
+    align-items: center; /* ממוקם את הכפתורים במרכז גובהית */
+    bottom: 8%;
+    right: 3px;
+    width: 10%;
+    text-align: center;
+    padding: 10px;
+  }
+  
+  
+  @media (max-width: 768px) {
+    .links-container {
+      width: 100%;
+      bottom: 0%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .links-container {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  }
+ 

@@ -1,0 +1,15 @@
+.red{
+    color:rgb(18, 17, 17);
+    background-color: red;
+    border-style:outset;
+}
+.green{
+    color:rgb(18, 17, 17);
+    background-color: green;
+    border-style:outset;
+}
+.orange{
+    color:rgb(18, 17, 17);
+   background-color: orange;
+   border-style:outset;
+}
