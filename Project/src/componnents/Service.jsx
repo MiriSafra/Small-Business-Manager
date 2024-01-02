@@ -85,11 +85,11 @@ const Service = observer(({ service }) => {
   return (
     <>
       <div>
-        <p>Id: {service.id}</p>
-        <p>Name: {service.name}</p>
-        <p>Description: {service.description}</p>
-        <p>Duration: {service.duration}</p>
-        <p>Price: {service.price}</p>
+        <p> קוד שירות: {service.id}</p>
+        <p>שם: {service.name}</p>
+        <p>תיאור שירות: {service.description}</p>
+        <p>משך זמן: {service.duration}</p>
+        <p>מחיר: {service.price}</p>
       </div>
     
       {!GlobalState.isAdmin && (
@@ -120,7 +120,7 @@ const Service = observer(({ service }) => {
                     </Select>
                   )}
                 />
-                {errors.serviceType && <p>Please select a Service Type</p>}
+                {errors.serviceType && <p>בחר סוג שירות</p>}
               </FormControl>
               {renderTextField("id", "Id", "number", null, "Please enter a number")}
               {renderTextField("dateTime", "Date and Time", "datetime-local", null, "Please enter a valid date and time")}

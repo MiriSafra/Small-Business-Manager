@@ -16,4 +16,4 @@ return(
 )
 
 }))
-export default Details
+export default Details;

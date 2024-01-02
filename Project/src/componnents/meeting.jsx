@@ -7,9 +7,10 @@ import axios from 'axios';
 import { Box } from '@mui/material';
 
 
-const meeting = observer(() => 
+
+const Meeting = observer(() => 
   {
-  function getappointments() {
+  function getMeeting() {
     axios.get(`http://localhost:8787/appointments`).then((res) => {
       GlobalState.appointments=res.data;
       sortArr(GlobalState.appointments);
@@ -22,16 +23,17 @@ const meeting = observer(() =>
     });
   }
   useEffect(() => {
-    getappointments();
+    getMeeting();
   }, []);
   return (
         <>
-              <Box display="flex" flexDirection="column" alignItems="center" bgcolor="#e0e0e0" p={2} marginTop={"300px"}></Box>
-          {GlobalState.appointments.map((appointment, index) => (
-            <DisplayMeeting key={index} appointment={appointment} />))}
-            <Box/>
+              <Box display="flex" flexDirection="column" alignItems="center" bgcolor="#e0e0e0" p={2} marginTop={"150px"}>
+          {GlobalState.appointments.map((meeting, index) => (
+            <DisplayMeeting key={index} meeting={meeting} />))
+            }
+          </Box>
       </>
 
   );
 });
-export default meeting
+export default Meeting;

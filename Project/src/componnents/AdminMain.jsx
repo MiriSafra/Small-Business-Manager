@@ -9,7 +9,9 @@ function AdminMain()
     return(
     <>   
     <Details/>
+    <div  style={{ position: 'relative', top: '50%', marginTop:"300px", zIndex:"999"}}>
     <ServicesMain/>
+    </div>
     </>
     )
 }

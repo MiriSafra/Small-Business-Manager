@@ -7,7 +7,7 @@ import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom' 
 import Admin from './componnents/Admin.jsx'
 import ServiceView from './componnents/ServiceView.jsx'
-import meeting from './componnents/meeting.jsx'
+import Meeting from './componnents/Meeting.jsx'
 
 
 const router=createBrowserRouter([
@@ -27,9 +27,9 @@ const router=createBrowserRouter([
         errorElement:<div>ServiceView not found</div>
       },
       {
-        path:'meeting',
-        element:<meeting/>,
-        errorElement:<div>meeting not found</div>
+        path:'Meeting',
+        element:<Meeting/>,
+        errorElement:<div>Meeting not found</div>
       }
     ]
   }

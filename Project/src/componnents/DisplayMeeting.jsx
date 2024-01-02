@@ -1,10 +1,12 @@
 
+
+import { observer } from "mobx-react"
+import './Meeting.css'
 import { useState } from 'react'
 import GlobalState from '../store/GlobalState';
-import { observer } from "mobx-react"
-import './meeting'
 
-const DisplayMeeting = (observer(({ appointment }) => {
+
+const DisplayMeeting = (observer(({ meeting }) => {
 
 console.log(new Date())
     
@@ -18,18 +20,18 @@ function getWeekBeforDate(date) {
 }
    
     return (
-            <div className={new Date(appointment.dateTime) - 24 <= new Date() ? "red" : getWeekBeforDate(appointment.dateTime) <= new Date() ? "orange" : "green"}>          
-                <p>id:{appointment.id}</p>
-                <p>serviceType:{appointment.serviceType}</p>
-                <p>dateTime:{appointment.dateTime}</p>
-                <p>clientName:{appointment.clientName}</p>
-                <p>clientPhone:{appointment.clientPhone}</p>
-                <p>clientEmail:{appointment.clientEmail}</p>
+            <div className={new Date(meeting.dateTime) - 24 <= new Date() ? "red" : getWeekBeforDate(meeting.dateTime) <= new Date() ? "orange" : "green"}>          
+                <p>id:{meeting.id}</p>
+                <p>serviceType:{meeting.serviceType}</p>
+                <p>dateTime:{meeting.dateTime}</p>
+                <p>clientName:{meeting.clientName}</p>
+                <p>clientPhone:{meeting.clientPhone}</p>
+                <p>clientEmail:{meeting.clientEmail}</p>
             </div>
 
     )
 
 }))
 
-export default DisplayMeeting
+export default DisplayMeeting;
 

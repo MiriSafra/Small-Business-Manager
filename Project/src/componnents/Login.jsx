@@ -4,12 +4,17 @@ import GlobalState from '../store/GlobalState';
 import { observer } from 'mobx-react';
 import TextField from '@mui/material/TextField';
 import Alert from '@mui/material/Alert';
-import Button from '@mui/material/Button'; // ייבוא של כפתור
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import InputAdornment from '@mui/material/InputAdornment';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 const Login = observer(() => {
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [errorAlert, setErrorAlert] = useState(null);
+  const [showPassword, setShowPassword] = useState(false);
 
   const passwordChange = (e) => {
     setPassword(e.target.value);
@@ -46,6 +51,10 @@ const Login = observer(() => {
     saveIsLogin(name, password);
   };
 
+  const handleTogglePassword = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
     <>
       <TextField
@@ -55,20 +64,37 @@ const Login = observer(() => {
         onChange={NameChange}
         value={name}
         color=""
+        sx={{ width: '100%', mb: 2 }} // הוספת סגנון להגדלת גודל השדה
       />
       <br />
       <br />
       <TextField
-        type="password"
+        type={showPassword ? 'text' : 'password'}
         label="Password"
         value={password}
         onChange={passwordChange}
         color=""
+        InputProps={{
+          endAdornment: (
+            <InputAdornment position="end">
+              <IconButton
+                aria-label="toggle password visibility"
+                onClick={handleTogglePassword}
+                edge="end"
+              >
+                {showPassword ? <VisibilityOff /> : <Visibility />}
+              </IconButton>
+            </InputAdornment>
+          ),
+        }}
+        sx={{ width: '100%', mb: 2 }} // הוספת סגנון להגדלת גודל השדה
       />
       <br />
       <br />
-      <Button variant="contained" onClick={handeleLogin} color="primary">login</Button> {/* שינוי כאן */}
-      
+      <Button variant="contained" onClick={handeleLogin} color="primary">
+        Login
+      </Button>
+
       {errorAlert && (
         <Alert severity="warning" onClose={handleCloseAlert}>
           {errorAlert}
@@ -79,3 +105,4 @@ const Login = observer(() => {
 });
 
 export default Login;
+
