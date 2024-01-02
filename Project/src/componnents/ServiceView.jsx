@@ -131,7 +131,7 @@ const ServiceView = observer(() => {
         </DialogActions>
       </Dialog>
 
-      <Box display="inline-table" flexDirection="column" alignItems="center" bgcolor="#e0e0e0" p={2}>
+      <Box display="inline-table" flexDirection="column" alignItems="center" bgcolor="#e0e0e0" p={2}  width={"300px"}>
         {GlobalState.services.map((service, index) => (
           <Box key={index} bgcolor="white" p={2} mb={2}>
             <Service service={service} />
