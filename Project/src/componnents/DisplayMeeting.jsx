@@ -20,11 +20,18 @@ const DisplayMeeting = (observer(({ meeting }) => {
             myDate.getDate() - 7,
         );
     }
-
+    function getCurrentDay(date) {
+        const myDate = new Date(date);
+        return new Date(
+            myDate.getFullYear(),
+            myDate.getMonth(),
+            myDate.getDate() -1,
+        );
+    }
     return (
         <Box width={"300px"}>
  
-        <div className={(new Date(meeting.dateTime).getFullYear() == new Date().getFullYear()&&new Date(meeting.dateTime).getMonth()==new Date().getMonth()&&new Date(meeting.dateTime).getDay()==new Date().getDay() )? "red": new Date(meeting.dateTime) < new Date()?"":
+        <div className={(getCurrentDay(meeting.dateTime) <= new Date())? "red" :
           getWeekBeforDate(meeting.dateTime) <= new Date()
           ? "orange" : "green"} >
 
