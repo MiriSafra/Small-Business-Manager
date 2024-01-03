@@ -22,23 +22,30 @@ const DisplayMeeting = (observer(({ meeting }) => {
     }
 
     return (
+        <Box width={"300px"}>
+ 
+        <div className={(new Date(meeting.dateTime).getFullYear() == new Date().getFullYear()&&new Date(meeting.dateTime).getMonth()==new Date().getMonth()&&new Date(meeting.dateTime).getDay()==new Date().getDay() )? "red": new Date(meeting.dateTime) < new Date()?"":
+          getWeekBeforDate(meeting.dateTime) <= new Date()
+          ? "orange" : "green"} >
 
-        <div className={new Date(meeting.dateTime) - 24 <= new Date() ? "red" : getWeekBeforDate(meeting.dateTime) <= new Date() ? "orange" : "green"} >
-
-            <Box width={"300px"}>
+          
 
 
-                <p>מזהה פגישה:{meeting.id}</p>
-                <p>סוג שירות:{meeting.serviceType}</p>
+                <p>מזהה פגישה:
+                {meeting.id}</p>
+                <p>:סוג שירות<br />
+                {meeting.serviceType}</p>
                 <p>:תאריך פגישה<br />
                     {meeting.dateTime}</p>
-                <p>שם לקוח:{meeting.clientName}</p>
-                <p>טלפון:{meeting.clientPhone}</p>
+                <p>:שם לקוח<br />
+                {meeting.clientName}</p>
+                <p>:טלפון<br />
+                {meeting.clientPhone}</p>
                 <p>:דוא"ל<br />
                     {meeting.clientEmail}</p>
-            </Box>
+          
         </div>
-
+        </Box>
     )
 
 }))
