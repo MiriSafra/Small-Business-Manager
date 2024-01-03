@@ -25,7 +25,7 @@ const DisplayMeeting = (observer(({ meeting }) => {
         return new Date(
             myDate.getFullYear(),
             myDate.getMonth(),
-            myDate.getDate() -1,
+            myDate.getDate() ,
         );
     }
     return (
