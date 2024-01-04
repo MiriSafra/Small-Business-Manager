@@ -1,4 +1,5 @@
 
+
 import { useState } from 'react';
 import GlobalState from '../store/GlobalState';
 import { observer } from 'mobx-react';
@@ -23,9 +24,7 @@ const Service = observer(({ service }) => {
   const handleClose = () => setOpen(false);
 
   const isValidPhone = (phone) => /^\d{10}$/.test(phone);
-
   const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-
   const isValidName = (name) => /^[a-zA-Z]+$/.test(name);
 
   const postMeeting = async (data) => {
@@ -41,7 +40,7 @@ const Service = observer(({ service }) => {
       if (res.status === 200) {
         GlobalState.addAppointment(data);
         handleClose();
-
+        alert("The meeting was successfully recorded");
       } else if (res.status === 400) {
         alert("Invalid date and time. Please enter valid data.");
       }
@@ -63,6 +62,14 @@ const Service = observer(({ service }) => {
 
     if (!isValidName(data.clientName)) {
       alert("Invalid client name. Please enter letters only.");
+      return;
+    }
+
+    const selectedDateTime = new Date(data.dateTime);
+    const currentDateTime = new Date();
+
+    if (selectedDateTime <= currentDateTime) {
+      alert("Invalid date and time. Please select a future date and time.");
       return;
     }
 
@@ -94,7 +101,7 @@ const Service = observer(({ service }) => {
     
       {!GlobalState.isAdmin && (
         <Button variant="outlined" onClick={handleOpen}>
-         הוסף פגישה
+          הוסף פגישה
         </Button>
       )}
 
@@ -140,4 +147,3 @@ const Service = observer(({ service }) => {
 });
 
 export default Service;
-
